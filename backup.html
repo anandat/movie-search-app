@@ -1,0 +1,193 @@
+
+
+
+seacrh html
+
+
+
+<div class="col s12">
+	<input type="text" class="search-input" placeholder="search movie" [(ngModel)]="search">
+	<div class="row">
+
+ <movie-preview *ngFor="let movie of searchResult; let i = index" [movie]="movie" > </movie-preview>
+		
+		
+		
+		<h3 [ngStyle]="{'text-align':center}"> nahi h data kuch or try kar lo  {{search}}</h3> 
+	</div>
+</div>
+
+
+
+
+
+
+import { Component, OnInit , Input } from '@angular/core';
+import { Movie } from '../Movie'
+
+@Component({
+  selector: 'movie-preview',
+  templateUrl: './movie-preview.component.html',
+  styles: []
+})
+export class MoviePreviewComponent implements OnInit {
+@input() movie:Movie ={}
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
+import { Component, OnInit } from '@angular/core';
+import { data } from '../mock-data'
+import { Movie } from '../movie'
+
+@Component({
+  selector: 'app-search-movie',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
+})
+export class SearchComponent implements OnInit {
+
+searchResult:Movie[] = data 
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
+export interface Movie{
+	backdrop_path?:string|null
+	poster_path?:string|null
+	orignal_tittle:string
+	overview?:string
+	tittle:string
+	release-date?:string
+}
+
+
+
+<app-header></app-header>
+<main>
+  <div class="container">
+<app-display-movie></app-display-movie>
+<app-search-movie></app-search-movie>
+  </div>
+</main>
+<app-footer></app-footer>
+
+
+movie preview componenet html 
+
+<div class="col s12 m4 movie">
+	<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<span class="card-tittle">the Movie Tittle</span>
+				<div class="movie-year">2018-8-3</div>
+			</div>
+	</div>
+</div>
+
+
+footer component html 
+
+ <p>
+  footer works!
+</p>
+<footer class="page-footer">
+		<div class="container">
+			
+				<div class="row">
+						<div class="col l6s12">
+							<h5 class="white-text"> DB ATUL NE BNYA HAI</h5>
+						</div>
+				</div>
+
+		</div>
+	
+
+</footer>
+
+display html
+
+
+<div class="col m7 s12">
+	<h3 class="fade-in-right">The movie Tittle</h3>
+	<div class="row">
+			<div class="col m3 fade-in-right slower">
+				2017-8-10
+			</div>
+	</div>
+	<div class="row">
+		<p class="flow-text col s12 fade-in-left slow">
+			
+			bvslkdj lsndflns clksbflknsc
+		</p>
+	</div>
+</div> 
+
+
+header component html
+
+<div class="icon-preview col s6 m3" center-align><i class="material-icons dp48">search</i><span></span></div>
+
+
+index html
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+
+
+  app module 
+
+
+  import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { DisplayMovieComponent } from './display-movie/display-movie.component';
+import { FooterComponent } from './footer/footer.component';
+import { SearchComponent } from './search/search.component';
+import { MoviePreviewComponent } from './search/movie-preview/movie-preview.component';
+
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    DisplayMovieComponent,
+    FooterComponent,
+    SearchComponent,
+    MoviePreviewComponent,
+    
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+
+
+
+
+header htmlk
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
